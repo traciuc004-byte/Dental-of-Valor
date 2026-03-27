@@ -23,7 +23,7 @@
 
 .hero__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
   align-items: center;
   gap: 60px;
   width: 100%;
@@ -34,7 +34,7 @@
 
 /* ── Left : Text ────────────────────────────────────────────── */
 .hero__content {
-  max-width: 580px;
+  max-width: 905px;
 }
 
 .hero__title {
@@ -52,7 +52,7 @@
   color: #667085;
   line-height: 1.7;
   margin-bottom: 40px;
-  max-width: 470px;
+  max-width: 733px;
 }
 
 .hero__actions {
@@ -128,10 +128,15 @@
 }
 
 /* Decorative floating blobs */
+.hero__mobile-img {
+  display: none;
+}
+
 .hero__blob {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
+  will-change: transform;
 }
 .hero__blob--top {
   top: -16px;
@@ -236,14 +241,35 @@
   .hero__actions { justify-content: center; }
   .hero__trust  { justify-content: center; }
 
-  /* Stack images on mobile */
-  .hero__collage { height: 420px; }
-  .hero__col-img--top   { width: 250px; height: 250px; }
-  .hero__col-img--right { width: 160px; height: 160px; right: 5%; bottom: 8%; }
-  .hero__col-img--bottom { width: 128px; height: 128px; left: 5%; bottom: 0; }
+  /* Override layout for mobile */
+  .hero__collage { display: none; }
+  
+  .hero__mobile-img {
+    display: block;
+    width: 100%;
+    margin-bottom: 32px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(30, 58, 95, 0.12);
+    border: 6px solid #fff;
+  }
+  
+  .hero__mobile-img img {
+    width: 100%;
+    max-height: 380px;
+    object-fit: cover;
+    display: block;
+  }
 }
 
 @media (max-width: 480px) {
-  .hero__title { font-size: 2.2rem; }
-  .hero__inner { padding-inline: 20px; }
+  .hero__title { font-size: 2rem; }
+  .hero__description { font-size: 1rem; }
+  .hero__inner { padding-inline: 20px; padding-bottom: 40px; }
+  .hero__collage { height: 300px; }
+  .hero__col-img--top   { width: 180px; height: 180px; }
+  .hero__col-img--right { width: 120px; height: 120px; right: 2%; }
+  .hero__col-img--bottom { width: 100px; height: 100px; left: 2%; }
+  .hero__actions { flex-direction: column; align-items: center; }
+  .hero__mobile-img img { max-height: 280px; }
 }

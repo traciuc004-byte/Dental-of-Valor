@@ -41,8 +41,7 @@ export default function Hero() {
           animate="visible"
         >
           <motion.h1 className="hero__title" variants={itemVariants}>
-            Premium Dental Care<br />
-            in Anderlecht.
+            Premium Dental Care in Anderlecht.
           </motion.h1>
 
           <motion.p className="hero__description" variants={itemVariants}>
@@ -72,6 +71,10 @@ export default function Hero() {
               Serving the community since 2012
             </div>
           </motion.div>
+
+          <div className="hero__mobile-img">
+            <img src={heroClinic} alt="Dental of Valor Clinic" />
+          </div>
         </motion.div>
 
         {/* ── Right: image collage ── */}
