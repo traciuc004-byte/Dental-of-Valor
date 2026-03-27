@@ -1,0 +1,252 @@
+/* ════════════════════════════════════════════════════
+   Sticky Stacking Services Section
+   ════════════════════════════════════════════════════ */
+
+.svc-stack {
+  position: relative;
+  background: var(--clr-white);
+  padding-bottom: 60px; /* buffer after the last sticky card */
+}
+
+/* ── Intro Section (scrolls away naturally) ───── */
+.svc-stack__header-section {
+  padding: 100px 0 60px;
+  background: var(--clr-white);
+  text-align: center;
+  position: relative;
+  z-index: 0;
+}
+
+.svc-stack__divider {
+  margin: 0 auto 16px;
+}
+
+.svc-stack__subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Individual Sticky Cards ────────────────────── */
+.svc-stack__card {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 80px; /* leave room for navbar, so content centers nicely */
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Dotted Matrix Background Effect ────────────── */
+.svc-stack__bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Content Layout Grid ────────────────────────── */
+.svc-stack__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding-block: 40px;
+}
+
+/* Left side content */
+.svc-stack__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.svc-stack__num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--clr-primary-light);
+  margin-bottom: 12px;
+}
+
+.svc-stack__title {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.svc-stack__tagline {
+  font-size: 1rem;
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.svc-stack__steps {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.svc-stack__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: var(--clr-text);
+  line-height: 1.5;
+}
+
+.svc-stack__step-num {
+  font-size: 0.65rem;
+  font-weight: 800;
+  background: var(--clr-white);
+  color: var(--clr-primary);
+  border-radius: 6px;
+  padding: 4px 8px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-top: 1px;
+}
+
+/* ── Footer / CTA Row ───────────────────────────── */
+.svc-stack__card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  gap: 20px;
+}
+
+/* Pill CTA Button (From original GSAP styling) */
+.svc-stack__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 4px 60px 4px 28px;
+  background: var(--clr-primary);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.svc-stack__cta:hover {
+  padding: 4px 28px 4px 60px;
+}
+
+.svc-stack__cta-text {
+  position: relative;
+  z-index: 10;
+}
+
+.svc-stack__cta-icon-wrapper {
+  position: absolute;
+  right: 6px;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  color: var(--clr-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+.svc-stack__cta:hover .svc-stack__cta-icon-wrapper {
+  right: calc(100% - 46px);
+  transform: rotate(45deg);
+}
+
+/* ── Right side image ───────────────────────────── */
+.svc-stack__img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svc-stack__img {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* ── Responsive Mobile ──────────────────────────── */
+@media (max-width: 1024px) {
+  .svc-stack__inner {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .svc-stack__inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-block: 20px;
+  }
+  
+  .svc-stack__card {
+    min-height: 100dvh;
+    padding-top: 80px;
+  }
+  
+  .svc-stack__header-section {
+    padding: 80px 0 40px;
+  }
+
+  .svc-stack__img {
+    aspect-ratio: 16/10;
+    max-height: 240px;
+    margin-bottom: 0px;
+  }
+  
+  /* On mobile, swap order so image is above text */
+  .svc-stack__content {
+    grid-row: 2;
+  }
+  .svc-stack__img-wrap {
+    grid-row: 1;
+  }
+  
+  .svc-stack__steps {
+    display: none; /* Hide steps on mobile to save space */
+  }
+  
+  .svc-stack__card-footer {
+    border-top: none;
+    padding-top: 8px;
+  }
+  
+  .svc-stack__cta {
+    width: fit-content;
+  }
+}

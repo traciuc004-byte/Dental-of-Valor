@@ -1,0 +1,314 @@
+/* ===============================================================
+   DESIGN SYSTEM — Dental of Valor (Reference: Dento style)
+   =============================================================== */
+
+:root {
+  /* ── Palette ─────────────────────────────────────── */
+  --clr-white: #ffffff;
+  --clr-bg: #f4f7fb;
+  --clr-bg-hero: #eef3fa;
+  --clr-border: #d6e2f0;
+
+  --clr-primary: #1e3a5f;         /* deep navy blue */
+  --clr-primary-light: #2e6da4;
+  --clr-primary-xlight: #e8f0fb;
+  --clr-primary-dark: #122440;
+
+  --clr-accent: #ddeeff;          /* light sky blue badge */
+  --clr-accent-dark: #b3d4f5;
+
+  --clr-text: #1a1a1a;
+  --clr-text-muted: #667085;
+  --clr-text-light: #9ca3af;
+
+  /* ── Typography ─────────────────────────────────── */
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ── Layout ──────────────────────────────────────── */
+  --section-py: 100px;
+  --container-max: 1200px;
+  --container-px: 32px;
+
+  /* ── Radius ──────────────────────────────────────── */
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   24px;
+  --radius-xl:   36px;
+  --radius-pill: 999px;
+
+  /* ── Shadows ─────────────────────────────────────── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.10);
+  --shadow-xl: 0 24px 64px rgba(0,0,0,0.12);
+
+  /* ── Transitions ─────────────────────────────────── */
+  --transition:      0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s  cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset ────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--clr-text);
+  background-color: var(--clr-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a   { text-decoration: none; color: inherit; }
+ul  { list-style: none; }
+
+/* Offset for fixed top navbar */
+:target { scroll-margin-top: 80px; }
+
+button, input, textarea {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* ── Typography ─────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--clr-primary);
+}
+
+/* ── Container ───────────────────────────────────────────────── */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-inline: var(--container-px);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 14px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all var(--transition);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Filled green — matches reference "Get Started" */
+.btn--primary {
+  background: var(--clr-primary);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--clr-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30, 58, 95, 0.3);
+}
+
+/* Outline — matches reference "Book Appointment" */
+.btn--outline {
+  background: transparent;
+  color: var(--clr-primary);
+  border: 1.5px solid var(--clr-primary);
+}
+
+.btn--outline:hover {
+  background: var(--clr-primary-xlight);
+  transform: translateY(-2px);
+}
+
+/* White (for dark bg CTA) */
+.btn--white {
+  background: white;
+  color: var(--clr-primary);
+}
+
+.btn--white:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Shiny Contact Button globally ── */
+
+@keyframes rotate-shine {
+  100% { transform: rotate(1turn); }
+}
+
+.btn-shiny-wrap {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  padding: 1.5px; /* The border thickness */
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.btn-shiny-wrap:hover {
+  transform: scale(1.03);
+}
+
+.btn-shiny-wrap:active {
+  transform: scale(0.98);
+}
+
+.btn-shiny-wrap::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
+  background-size: 50% 25%; /* Less surface area to reduce shine */
+  filter: blur(6px);
+  /* The shining light. Opacity 0.4 makes it slightly less blinding */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4));
+  animation: rotate-shine 4s linear infinite;
+}
+
+.btn--shiny {
+  background: #111; /* purely black per request */
+  color: white;
+  padding: 12px 32px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
+  position: relative;
+  z-index: 1; /* Stays above the shine */
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.btn--shiny:hover {
+  background: #1a1a1a;
+  color: white;
+}
+/* Ghost (for dark bg secondary) */
+.btn--ghost {
+  background: rgba(255,255,255,0.12);
+  color: white;
+  border: 1.5px solid rgba(255,255,255,0.35);
+}
+
+.btn--ghost:hover {
+  background: rgba(255,255,255,0.22);
+  transform: translateY(-2px);
+}
+
+/* ── Sections ────────────────────────────────────────────────── */
+.section {
+  padding-block: var(--section-py);
+}
+
+.section--bg {
+  background: var(--clr-bg);
+}
+
+/* ── Section labels ──────────────────────────────────────────── */
+.section-label {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-primary);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--clr-primary);
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--clr-text-muted);
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.text-center { text-align: center; }
+.text-center .section-subtitle { margin-inline: auto; }
+
+/* ── Divider accent ─────────────────────────────────────────── */
+.divider {
+  width: 40px;
+  height: 3px;
+  background: var(--clr-primary);
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+.text-center .divider { margin-inline: auto; }
+
+/* ── Scroll animations ──────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.9); opacity: 0.6; }
+  70%  { transform: scale(1.3); opacity: 0; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+.animate-fade-up  { animation: fadeInUp 0.75s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.animate-fade     { animation: fadeIn  0.6s  ease both; }
+
+.delay-1 { animation-delay: 0.10s; }
+.delay-2 { animation-delay: 0.20s; }
+.delay-3 { animation-delay: 0.30s; }
+.delay-4 { animation-delay: 0.40s; }
+.delay-5 { animation-delay: 0.50s; }
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--clr-bg); }
+::-webkit-scrollbar-thumb { background: var(--clr-primary-light); border-radius: 3px; }

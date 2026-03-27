@@ -1,0 +1,208 @@
+/* ════════════════════════════════════════════════════
+   Before / After Section
+   ════════════════════════════════════════════════════ */
+
+.ba-section {
+  padding: 80px 0 120px;
+  background-color: #e5e5e5; /* The grayish background seen in the reference */
+  font-family: var(--font-sans, "Inter", sans-serif);
+}
+
+/* ── Header exact match ────────────────────────────── */
+.ba-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.ba-title {
+  font-family: var(--font-serif, "Libre Baskerville", serif);
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.ba-separator {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: clamp(5rem, 10vw, 10rem);
+  font-weight: 200;
+  color: #333;
+  line-height: 1;
+  transform: rotate(15deg) translateY(-10px);
+}
+
+.ba-link-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 10px; /* Aligned low */
+}
+
+.ba-see-all {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #333;
+  line-height: 1.3;
+}
+
+.ba-see-all-top {
+  color: #888;
+  font-weight: 500;
+}
+
+.ba-see-all-bottom {
+  border-bottom: 1.5px solid #333;
+  padding-bottom: 2px;
+}
+
+/* ── Grid of sliders ───────────────────────────────── */
+.ba-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+
+/* Make central image vertically larger like the design */
+/* Outer containers all align center, but central card needs extra vertical height or scaling */
+.ba-grid-item:nth-child(2) .ba-slider-card {
+  transform: scale(1.15); /* Enlarge the middle one */
+  margin: 20px 0;
+  z-index: 10;
+  position: relative;
+}
+
+.ba-grid-item {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Slider Component ──────────────────────────────── */
+.ba-slider-card {
+  width: 100%;
+  max-width: 400px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.ba-slider-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  background: #fff;
+  overflow: hidden;
+  cursor: ew-resize;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+  user-select: none;
+}
+
+.ba-image, .ba-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* The drag handle */
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* let clicks pass exactly to the container */
+  transform: translateX(-50%);
+}
+
+.ba-handle-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background-color: #fff;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.ba-handle-thumb {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  gap: -2px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.ba-handle-thumb svg {
+  margin: 0 -3px;
+}
+
+/* ── Bottom Links ──────────────────────────────────── */
+.ba-card-caption {
+  margin-top: 16px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1.5px solid #333;
+  padding-bottom: 2px;
+  background: #fff;
+  padding: 8px 32px 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .ba-header {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .ba-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .ba-grid-item:nth-child(2) .ba-slider-card {
+    transform: scale(1);
+    margin: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .ba-header {
+    gap: 0.5rem;
+  }
+  
+  .ba-title { font-size: 3rem; }
+  .ba-separator { font-size: 4rem; }
+  
+  .ba-grid {
+    grid-template-columns: 1fr;
+  }
+}

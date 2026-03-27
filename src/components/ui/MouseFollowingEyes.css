@@ -1,0 +1,35 @@
+.mfe-eyes-wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.mfe-eye {
+  position: relative;
+  background-color: white;
+  border: 4px solid black;
+  border-radius: 9999px;
+  height: 96px;
+  width: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mfe-pupil {
+  position: absolute;
+  background-color: black;
+  border-radius: 9999px;
+  height: 32px;
+  width: 32px;
+  transition: transform 0.05s ease-out; /* duration-5ms */
+}
+
+.mfe-pupil-highlight {
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 9999px;
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+}

@@ -1,0 +1,263 @@
+/* ── FullScreenScrollFX ──────────────────────────────────────────────── */
+
+.fx {
+  width: 100%;
+  overflow: hidden;
+  background: var(--fx-page-bg, #fff);
+  font-family: var(--fx-font, inherit);
+}
+
+/* Scroll wrapper */
+.fx-scroll { position: relative; }
+
+/* The sticky section that pins */
+.fx-fixed-section { position: relative; } /* height is set inline via JS */
+
+.fx-fixed {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--fx-stage-bg, #0d1b2e);
+}
+
+/* ── Backgrounds ──────────────────────────────────────────────────────── */
+.fx-bgs {
+  position: absolute;
+  inset: 0;
+  background: var(--fx-stage-bg, #0d1b2e);
+  z-index: 1;
+}
+
+.fx-bg { position: absolute; inset: 0; }
+
+.fx-bg-img {
+  position: absolute;
+  inset: -10% 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  filter: brightness(0.55) saturate(0.9);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.fx-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--fx-overlay, rgba(10, 22, 42, 0.52));
+}
+
+/* ── Grid ─────────────────────────────────────────────────────────────── */
+.fx-grid {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 0 var(--fx-grid-px, 2rem);
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────── */
+.fx-header {
+  padding-top: 5vh;
+  text-align: center;
+  color: var(--fx-text, rgba(240,245,255,0.9));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ── Content area (3 columns) ─────────────────────────────────────────── */
+.fx-content {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  align-items: center;
+  gap: var(--fx-gap, 1rem);
+  height: 100%;
+}
+
+/* ── Left / Right lists ───────────────────────────────────────────────── */
+.fx-left,
+.fx-right {
+  height: 60vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.fx-left { justify-content: flex-start; }
+.fx-right { justify-content: flex-end; }
+
+.fx-track { will-change: transform; width: 100%; }
+
+/* ── List items ───────────────────────────────────────────────────────── */
+.fx-item {
+  color: var(--fx-text, rgba(240,245,255,0.9));
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 6px 0;
+  opacity: 0.28;
+  will-change: opacity, transform;
+  position: relative;
+  cursor: pointer;
+  font-size: clamp(1rem, 2.2vw, 1.65rem);
+  letter-spacing: -0.01em;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+.fx-left-item { text-align: left; }
+.fx-right-item { text-align: right; }
+
+.fx-left-item.active { opacity: 1; padding-left: 18px; }
+.fx-right-item.active { opacity: 1; padding-right: 18px; }
+
+/* Active indicator dot */
+.fx-left-item.active::before,
+.fx-right-item.active::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+}
+.fx-left-item.active::before { left: 0; }
+.fx-right-item.active::after { right: 0; }
+
+/* ── Center title ─────────────────────────────────────────────────────── */
+.fx-center {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  height: 60vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.fx-featured {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  width: 100%;
+}
+
+.fx-featured.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fx-featured-title {
+  margin: 0;
+  color: var(--fx-text, rgba(240,245,255,0.92));
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: clamp(2.5rem, 7vw, 6.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Word mask for slide animation */
+.fx-word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.fx-word {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ── Footer / progress ────────────────────────────────────────────────── */
+.fx-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5vh;
+  color: var(--fx-text, rgba(240,245,255,0.9));
+}
+
+.fx-footer-left {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.fx-progress {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.fx-progress-numbers {
+  display: flex;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+
+.fx-progress-numbers span:last-child { opacity: 0.4; }
+
+.fx-progress-bar {
+  width: 80px;
+  height: 1.5px;
+  background: rgba(255,255,255,0.22);
+  position: relative;
+  border-radius: 2px;
+}
+
+.fx-progress-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0%;
+  background: rgba(255,255,255,0.8);
+  border-radius: 2px;
+  transition: width 0.35s ease;
+}
+
+.fx-footer-right {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+/* ── End spacer ───────────────────────────────────────────────────────── */
+.fx-end {
+  height: 60vh;
+  display: grid;
+  place-items: center;
+  background: var(--fx-page-bg, #fff);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .fx-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    place-items: center;
+    gap: 2vh;
+  }
+  .fx-left { height: auto; justify-content: center; }
+  .fx-right { height: auto; justify-content: center; }
+  .fx-center { height: auto; }
+  .fx-track { transform: none !important; }
+  .fx-item { font-size: clamp(0.9rem, 4vw, 1.4rem); }
+}
+
+@media (max-width: 600px) {
+  .fx-header { font-size: 0.62rem; }
+  .fx-featured-title { font-size: clamp(2rem, 9vw, 3.5rem); }
+}

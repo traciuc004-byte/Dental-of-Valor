@@ -1,0 +1,601 @@
+/* ════════════════════════════════════════════════════
+   About Page — Complete Styles
+   ════════════════════════════════════════════════════ */
+
+.about-page {
+  padding-top: 80px; /* offset for fixed navbar */
+}
+
+/* ── 1. HERO ──────────────────────────────────────────────────────────────── */
+.abt-hero {
+  padding: 80px 0 100px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.abt-hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.abt-hero__text {
+  max-width: 520px;
+}
+
+.abt-hero__title {
+  font-family: var(--font-sans);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  color: var(--clr-primary);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 20px 0 24px;
+}
+
+.abt-hero__sub {
+  font-size: 1.1rem;
+  color: var(--clr-text-muted);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 420px;
+}
+
+.abt-hero__image {
+  position: relative;
+}
+
+.abt-hero__img-card {
+  aspect-ratio: 4/3;
+  transition: transform 0.4s ease;
+  background: #ffffff;
+}
+
+.abt-hero__img-card:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+.abt-hero__img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+
+/* ── 2. TRUST STRIP ───────────────────────────────────────────────────────── */
+.abt-trust {
+  background: var(--clr-primary);
+  padding: 48px 0;
+}
+
+.abt-trust__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.abt-trust__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  position: relative;
+}
+
+.abt-trust__item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.abt-trust__value {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1;
+}
+
+.abt-trust__label {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-align: center;
+}
+
+/* ── 3. WHY US ────────────────────────────────────────────────────────────── */
+.abt-why__header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.abt-why__header .section-subtitle {
+  margin-inline: auto;
+}
+
+.abt-why__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.abt-why__item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--clr-border);
+  align-items: start;
+  transition: background 0.2s ease;
+  border-radius: 8px;
+}
+
+.abt-why__item:first-child {
+  border-top: 1px solid var(--clr-border);
+}
+
+.abt-why__item:hover {
+  background: var(--clr-primary-xlight);
+  padding-left: 12px;
+  padding-right: 12px;
+  margin: 0 -12px;
+}
+
+.abt-why__num {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--clr-primary);
+  letter-spacing: 0.06em;
+  background: var(--clr-primary-xlight);
+  border-radius: 6px;
+  padding: 5px 8px;
+  align-self: center;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.abt-why__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.abt-why__body {
+  font-size: 0.95rem;
+  color: var(--clr-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── 4. HUMAN SECTION ─────────────────────────────────────────────────────── */
+.abt-human {
+  background: var(--clr-bg);
+}
+
+.abt-human__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.abt-human__image {
+  position: relative;
+}
+
+.abt-human__photo {
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(30, 58, 95, 0.14);
+  display: block;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.abt-human__photo:hover {
+  transform: scale(1.02);
+}
+
+.abt-human__quote-card {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px 22px;
+  max-width: 260px;
+  box-shadow: 0 12px 36px rgba(30, 58, 95, 0.12);
+}
+
+.abt-human__quote-card p {
+  font-size: 0.88rem;
+  color: var(--clr-primary);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+.abt-human__quote-card span {
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+  font-weight: 500;
+}
+
+.abt-human__body {
+  font-size: 1rem;
+  color: var(--clr-text-muted);
+  line-height: 1.75;
+  margin: 0 0 20px;
+}
+
+
+
+/* ── 5. EXPERIENCE ────────────────────────────────────────────────────────── */
+.abt-experience__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.abt-experience__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.abt-experience__point {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 0.95rem;
+  color: var(--clr-text);
+  line-height: 1.6;
+}
+
+.abt-experience__check {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--clr-primary);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.abt-experience__image {
+  position: relative;
+}
+
+.abt-experience__image img {
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(30, 58, 95, 0.12);
+  display: block;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.4s ease;
+}
+
+.abt-experience__image img:hover {
+  transform: scale(1.02);
+}
+
+
+
+/* ── 6. SERVICES ──────────────────────────────────────────────────────────── */
+.abt-services {
+  background: var(--clr-bg);
+}
+
+.abt-services__header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.abt-services__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.abt-services__card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-decoration: none;
+  border: 1px solid var(--clr-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease,
+              border-color 0.25s ease;
+}
+
+.abt-services__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(30, 58, 95, 0.12);
+  border-color: var(--clr-primary-light);
+}
+
+.abt-services__icon {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.abt-services__name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin: 0;
+}
+
+.abt-services__desc {
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.abt-services__arrow {
+  font-size: 1.1rem;
+  color: var(--clr-primary-light);
+  margin-top: 8px;
+  transition: transform 0.2s ease;
+}
+
+.abt-services__card:hover .abt-services__arrow {
+  transform: translateX(4px);
+}
+
+/* ── 7. SOCIAL PROOF ──────────────────────────────────────────────────────── */
+.abt-reviews__header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.abt-reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.abt-review-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 28px;
+  border: 1px solid var(--clr-border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease;
+}
+
+.abt-review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(30, 58, 95, 0.1);
+}
+
+.abt-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.abt-stars svg {
+  width: 16px;
+  height: 16px;
+  fill: #f5a623;
+}
+
+.abt-review-card__text {
+  font-size: 0.95rem;
+  color: var(--clr-text);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+  font-style: italic;
+}
+
+.abt-review-card__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--clr-border);
+  padding-top: 16px;
+}
+
+.abt-review-card__smile {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--clr-primary-xlight);
+}
+
+.abt-review-card__author strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--clr-primary);
+  font-weight: 600;
+}
+
+.abt-review-card__author span {
+  font-size: 0.78rem;
+  color: var(--clr-text-muted);
+}
+
+.abt-reviews__rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--clr-text-muted);
+}
+
+.abt-reviews__rating svg {
+  width: 18px;
+  height: 18px;
+  fill: #f5a623;
+}
+
+.abt-reviews__rating strong {
+  color: var(--clr-primary);
+}
+
+/* ── 8. FINAL CTA ─────────────────────────────────────────────────────────── */
+.abt-cta {
+  background: var(--clr-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.abt-cta::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.abt-cta::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+}
+
+.abt-cta__inner {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 32px 0;
+}
+
+.abt-cta__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.6);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.abt-cta__title {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
+}
+
+.abt-cta__sub {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 0 36px;
+  line-height: 1.6;
+}
+
+/* White button variant on dark BG */
+.abt-cta .btn--shiny {
+  background: #fff;
+  color: var(--clr-primary);
+}
+
+.abt-cta__note {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 16px;
+  letter-spacing: 0.04em;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .abt-services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .abt-hero__inner,
+  .abt-human__grid,
+  .abt-experience__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .abt-hero__image { order: -1; }
+
+  .abt-human__quote-card {
+    right: 0;
+    bottom: 16px;
+    max-width: 220px;
+  }
+
+  .abt-experience__peace-badge {
+    right: 0;
+    bottom: 8px;
+  }
+
+  .abt-trust__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .abt-trust__item:not(:last-child)::after { display: none; }
+  .abt-trust__item:nth-child(2n)::after { display: none; }
+
+  .abt-reviews__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .abt-hero__title { font-size: 2rem; }
+  .abt-services__grid { grid-template-columns: 1fr 1fr; }
+  .abt-why__item { grid-template-columns: 40px 1fr; gap: 14px; }
+  .abt-trust__grid { grid-template-columns: 1fr 1fr; }
+  .abt-human__photo { aspect-ratio: 4/3; }
+}

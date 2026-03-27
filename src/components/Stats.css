@@ -1,0 +1,130 @@
+/* ════════════════════════════════════════════════════
+   Stats Section
+   ════════════════════════════════════════════════════ */
+
+.stats-section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: #fff;
+}
+
+.stats-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+}
+
+.stats-item {
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  background: #fff;
+}
+
+/* Vertical dividers between items */
+.stats-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  right: 0;
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Badge styles */
+.stats-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 24px;
+}
+
+.stats-badge--pink {
+  background-color: #ffeef2;
+  color: #d1496a;
+}
+
+.stats-badge--yellow {
+  background-color: #fff8e1;
+  color: #cda12e;
+}
+
+.stats-badge--purple {
+  background-color: #f7effe;
+  color: #9d5ec2;
+}
+
+.stats-badge--green {
+  background-color: #eefbee;
+  color: #44a958;
+}
+
+/* Value (e.g., 98%, 4.9/5) */
+.stats-value {
+  font-size: 3.5rem;
+  font-weight: 500;
+  font-family: var(--font-serif, "Libre Baskerville", serif);
+  color: var(--clr-primary, #0c1a32); /* Dark navy */
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+/* Description text */
+.stats-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* ── Responsive ────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stats-item:nth-child(2)::after {
+    display: none;
+  }
+  
+  .stats-item:nth-child(1),
+  .stats-item:nth-child(2) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    border: none;
+    box-shadow: none;
+  }
+  
+  .stats-item {
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    margin-bottom: 16px;
+    padding: 32px 24px;
+  }
+  
+  .stats-item::after {
+    display: none !important;
+  }
+}

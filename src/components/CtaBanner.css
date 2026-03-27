@@ -1,0 +1,158 @@
+/* ── Book / CTA Banner ──────────────────────────────────────── */
+
+.cta-banner {
+  background: linear-gradient(135deg, var(--clr-primary-dark) 0%, var(--clr-primary) 60%, var(--clr-primary-light) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cta-banner__bg-circle-1 {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 300px;
+  height: 300px;
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 50%;
+}
+
+.cta-banner__bg-circle-2 {
+  position: absolute;
+  bottom: -80px;
+  left: -40px;
+  width: 240px;
+  height: 240px;
+  border: 1.5px solid rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+
+.cta-banner__bg-dots {
+  position: absolute;
+  top: 20px;
+  left: 60px;
+  width: 120px;
+  height: 120px;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+.cta-banner__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 40px;
+}
+
+
+.cta-banner__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.cta-banner__badge-dot {
+  width: 6px;
+  height: 6px;
+  background: #4ade80;
+  border-radius: 50%;
+  position: relative;
+}
+
+.cta-banner__badge-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: #4ade80;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+.cta-banner__title {
+  font-family: var(--font-sans);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.cta-banner__subtitle {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.85);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+.cta-banner__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.cta-banner__action-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn--white {
+  background: white;
+  color: var(--clr-primary);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.btn--white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+}
+
+.cta-banner__note {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cta-banner__note svg {
+  width: 14px;
+  height: 14px;
+  stroke: rgba(255,255,255,0.6);
+}
+
+@media (max-width: 800px) {
+  .cta-banner__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cta-banner__actions { align-items: center; }
+  .cta-banner__action-buttons { justify-content: center; }
+  .cta-banner__subtitle { margin-inline: auto; }
+}

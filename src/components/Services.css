@@ -1,0 +1,424 @@
+/* ════════════════════════════════════════════════════
+   Scroll-Pinned Services Section
+   ════════════════════════════════════════════════════ */
+
+/*
+ * ScrollTrigger will pin this element with position:fixed
+ * when the user scrolls into it. Do NOT set position:sticky here.
+ */
+.svcpin {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow: hidden;
+  will-change: transform;
+
+  /* Subtle dot-grid background (matches reference) */
+  background-image: radial-gradient(circle, #d6e2f0 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Header bar ────────────────────────────────────── */
+.svcpin__header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-top: 28px;
+  padding-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.svcpin__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  white-space: nowrap;
+}
+
+.svcpin__subtitle {
+  flex: 1;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--clr-text-muted);
+}
+
+.svcpin__counter {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--clr-text-muted);
+  white-space: nowrap;
+}
+
+/* ── Three-column body ─────────────────────────────── */
+.svcpin__body {
+  display: grid;
+  grid-template-columns: 36% 1fr 1fr;
+  gap: 32px;
+  flex: 1;
+  min-height: 0;
+  align-items: center;
+}
+
+/* ── LEFT — service list ───────────────────────────── */
+.svcpin__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.svcpin__row {
+  position: relative;
+  padding: 22px 32px 18px 0;
+  transition: padding 0.3s ease;
+}
+
+.svcpin__row-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.svcpin__row-title {
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: rgba(30, 58, 95, 0.22);
+  transition: color 0.4s ease, font-size 0.3s ease;
+}
+
+.svcpin__row-num {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(30, 58, 95, 0.22);
+  transition: color 0.4s ease;
+  flex-shrink: 0;
+}
+
+/* Done (already scrolled past) */
+.svcpin__row--done .svcpin__row-title,
+.svcpin__row--done .svcpin__row-num {
+  color: rgba(30, 58, 95, 0.38);
+}
+
+/* Active */
+.svcpin__row--active .svcpin__row-title {
+  color: var(--clr-primary);
+  font-size: clamp(1.6rem, 2.6vw, 2.15rem);
+}
+
+.svcpin__row--active .svcpin__row-num {
+  color: var(--clr-primary);
+}
+
+/* Row divider */
+.svcpin__row-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 32px;
+  height: 1px;
+  background: var(--clr-border);
+}
+
+/* Short subtitle — revealed only on the active row */
+.svcpin__row-subtitle {
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+  font-weight: 400;
+  letter-spacing: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+  transition:
+    max-height 0.35s ease,
+    opacity    0.3s  ease,
+    margin-top 0.3s  ease;
+}
+
+.svcpin__row--active .svcpin__row-subtitle {
+  max-height: 2rem;
+  opacity: 1;
+  margin-top: 6px;
+}
+
+/* Cursor + hover highlight */
+.svcpin__row { cursor: pointer; }
+
+.svcpin__row:not(.svcpin__row--active):hover .svcpin__row-title {
+  color: rgba(30, 58, 95, 0.5);
+}
+.svcpin__row:focus-visible {
+  outline: 2px solid var(--clr-primary-light);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ── CENTER — image ────────────────────────────────── */
+.svcpin__img-wrap {
+  align-self: center;
+  display: grid;
+}
+
+.svcpin__img-box {
+  grid-area: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  max-height: calc(100vh - 200px);
+  box-shadow: 0 20px 60px rgba(30, 58, 95, 0.15);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.svcpin__img-box--in  { opacity: 1; transform: scale(1);    pointer-events: auto;  z-index: 2; }
+.svcpin__img-box--out { opacity: 0; transform: scale(0.975); pointer-events: none;  z-index: 1; }
+
+.svcpin__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── RIGHT — info panel ────────────────────────────── */
+.svcpin__info-wrap {
+  align-self: center;
+  display: grid;
+}
+
+.svcpin__info {
+  grid-area: 1 / 1;
+  background: rgba(240, 245, 251, 0.95);
+  border-radius: 18px;
+  padding: 28px 24px;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.svcpin__info--in  { opacity: 1; transform: translateY(0);   pointer-events: auto;  z-index: 2; }
+.svcpin__info--out { opacity: 0; transform: translateY(10px); pointer-events: none;  z-index: 1; }
+
+.svcpin__tagline {
+  font-size: 0.88rem;
+  color: var(--clr-primary);
+  font-weight: 500;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.svcpin__steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.svcpin__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--clr-text);
+  line-height: 1.5;
+}
+
+.svcpin__step-num {
+  font-size: 0.6rem;
+  font-weight: 800;
+  background: #fff;
+  color: var(--clr-primary);
+  border-radius: 4px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(30, 58, 95, 0.08);
+  letter-spacing: 0.04em;
+  margin-top: 1px;
+}
+
+/* ── Card footer: specialists + CTA ────────────────── */
+.svcpin__card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(30, 58, 95, 0.08);
+  gap: 12px;
+}
+
+/* Overlapping avatar stack */
+.svcpin__specialists {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.svcpin__avatars {
+  display: flex;
+}
+
+.svcpin__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid rgba(240, 245, 251, 0.95);
+  margin-left: -10px;
+  box-shadow: 0 2px 6px rgba(30, 58, 95, 0.12);
+}
+
+.svcpin__avatar:first-child { margin-left: 0; }
+
+.svcpin__specialists-label {
+  font-size: 0.72rem;
+  color: var(--clr-text-muted);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Animated pill CTA button */
+.svcpin__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 4px 56px 4px 24px;
+  background: var(--clr-primary);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.5s ease;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: max-content;
+}
+
+.svcpin__cta:hover {
+  padding: 4px 24px 4px 56px;
+}
+
+.svcpin__cta-text {
+  position: relative;
+  z-index: 10;
+  transition: all 0.5s ease;
+}
+
+.svcpin__cta-icon-wrapper {
+  position: absolute;
+  right: 4px;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  color: var(--clr-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+.svcpin__cta:hover .svcpin__cta-icon-wrapper {
+  right: calc(100% - 44px);
+  transform: rotate(45deg);
+}
+
+/* ── Footer progress ───────────────────────────────── */
+.svcpin__footer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.svcpin__dots {
+  display: flex;
+  gap: 8px;
+}
+
+.svcpin__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clr-border);
+  transition: background 0.3s ease, transform 0.3s ease, width 0.3s ease;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.svcpin__dot--done   { background: rgba(30, 58, 95, 0.35); }
+.svcpin__dot--active {
+  background: var(--clr-primary);
+  transform: scale(1.4);
+}
+
+.svcpin__scroll-hint {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-text-light);
+  margin-left: auto;
+  animation: hintPulse 2s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .svcpin__body {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "list   img"
+      "info   img";
+    align-items: start;
+    gap: 24px;
+  }
+
+  .svcpin__list     { grid-area: list; }
+  .svcpin__img-wrap { grid-area: img; }
+  .svcpin__info-wrap { grid-area: info; }
+
+  .svcpin__img-box { max-height: 50vh; }
+}
+
+@media (max-width: 640px) {
+  .svcpin {
+    background-size: 20px 20px;
+  }
+
+  .svcpin__body {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "list"
+      "img"
+      "info";
+    overflow-y: auto;
+    gap: 16px;
+  }
+
+  .svcpin__header { flex-wrap: wrap; gap: 4px; }
+  .svcpin__subtitle { flex: 1 0 100%; text-align: left; }
+
+  .svcpin__row-title { font-size: 1.3rem; }
+  .svcpin__row--active .svcpin__row-title { font-size: 1.55rem; }
+
+  .svcpin__img-box { max-height: 35vh; }
+}

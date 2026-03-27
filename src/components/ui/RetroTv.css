@@ -1,0 +1,206 @@
+.main_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5em;
+}
+
+.antenna {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid black;
+  background-color: transparent;
+  margin-bottom: -6px;
+  margin-left: 0px;
+  z-index: -1;
+}
+
+.antenna_shadow {
+  position: absolute;
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  box-shadow: inset 0px 16px #fff, inset 0px 16px 1px 1px #fff;
+  -moz-box-shadow: inset 0px 16px #fff, inset 0px 16px 1px 1px #fff;
+}
+
+.antenna::after {
+  content: "";
+  position: absolute;
+  margin-top: -94px;
+  margin-left: 25px;
+  border-left: 2px solid black;
+  height: 115px;
+  width: 2px;
+  transform: rotate(-25deg);
+  background-color: black;
+}
+
+.antenna::before {
+  content: "";
+  position: absolute;
+  margin-top: -94px;
+  margin-left: 25px;
+  border-left: 2px solid black;
+  height: 115px;
+  width: 2px;
+  transform: rotate(25deg);
+  background-color: black;
+}
+
+.tv {
+  width: 240px;
+  height: 150px;
+  background-color: #d36604;
+  border: 4px solid black;
+  border-radius: 20px;
+  position: relative;
+}
+
+.cruve {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.4);
+  right: -5px;
+  top: -5px;
+  border-radius: 20px;
+  border-bottom-left-radius: 60px;
+  overflow: hidden;
+}
+
+.curve_svg {
+  width: 80px;
+  height: 80px;
+  fill: #fff;
+}
+
+.display_div {
+  position: absolute;
+  width: 150px;
+  height: 100px;
+  background-color: transparent;
+  border: 4px solid black;
+  border-radius: 30px;
+  top: 20px;
+  left: 15px;
+  overflow: hidden;
+}
+
+.screen_out {
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+}
+
+.screen_out1 {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(0deg, transparent 0%, rgba(32, 128, 32, 0.3) 1%, transparent 2%);
+  background-size: 100% 3px;
+}
+
+.screen {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  position: relative;
+}
+
+.notfound_text {
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px #ff4500, -2px -2px #00ff00;
+  animation: glitch 1.5s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); text-shadow: 2px 2px #ff4500, -2px -2px #00ff00; }
+  10% { transform: translate(-2px, 2px); text-shadow: 2px 2px #ff4500, -2px -2px #00ff00; }
+  20% { transform: translate(2px, -2px); text-shadow: 2px 2px #ff4500, -2px -2px #00ff00; }
+  30% { transform: translate(0); text-shadow: 2px 2px #ff4500, -2px -2px #00ff00; }
+  100% { transform: translate(0); text-shadow: 2px 2px #ff4500, -2px -2px #00ff00; }
+}
+
+.lines {
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  width: 45px;
+  height: 90px;
+}
+
+.line1, .line2, .line3 {
+  width: 100%;
+  height: 6px;
+  background-color: black;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.buttons_div {
+  position: absolute;
+  bottom: 0px;
+  right: 15px;
+  height: 30px;
+  display: flex;
+  justify-content: space-around;
+  width: 45px;
+}
+
+.b1, .b2 {
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.bottom {
+  position: absolute;
+  width: 240px;
+  height: 10px;
+  background-color: black;
+  bottom: -4px;
+}
+
+.text_404 {
+  font-family: inherit;
+  font-size: 40px;
+  font-weight: bold;
+  color: black;
+  text-shadow: 4px 4px 0 white;
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.text_4041, .text_4042, .text_4043 {
+  animation: float 2s infinite ease-in-out;
+}
+.text_4041 { animation-delay: 0.1s; }
+.text_4042 { animation-delay: 0.2s; }
+.text_4043 { animation-delay: 0.3s; }
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}

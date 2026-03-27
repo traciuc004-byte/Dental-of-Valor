@@ -1,0 +1,322 @@
+/* ══════════════════════════════════════════════════════
+   Top Navbar — full-width bar, clinic design system
+   ══════════════════════════════════════════════════════ */
+
+/* ── Outer bar ──────────────────────────────────────── */
+.tl-navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  padding: 0 40px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(214, 226, 240, 0.7);
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.tl-navbar-wrapper--scrolled {
+  box-shadow: 0 4px 24px rgba(30, 58, 95, 0.08);
+  background: rgba(255, 255, 255, 0.97);
+}
+
+/* ── Logo ────────────────────────────────────────────── */
+.tl-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.tl-logo__icon {
+  width: 32px;
+  height: 32px;
+  background: var(--clr-primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tl-logo__icon svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
+}
+
+.tl-logo__name {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-primary);
+  white-space: nowrap;
+}
+
+/* ── Centre nav pill ─────────────────────────────────── */
+.tl-navbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(244, 247, 251, 0.9);
+  border: 1px solid rgba(214, 226, 240, 0.8);
+  border-radius: 9999px;
+  padding: 5px 6px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── Nav items ───────────────────────────────────────── */
+.tl-nav-item {
+  position: relative;
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  transition: color 0.15s ease;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  gap: 6px;
+}
+
+.tl-nav-item:hover {
+  color: var(--clr-primary);
+}
+
+.tl-nav-item--active {
+  color: var(--clr-primary);
+}
+
+/* Text / icon responsive */
+.tl-nav-item__text {
+  display: none;
+}
+
+.tl-nav-item__icon {
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
+
+@media (min-width: 768px) {
+  .tl-nav-item__text {
+    display: inline;
+  }
+  .tl-nav-item__icon {
+    display: none;
+  }
+}
+
+/* ── Framer motion lamp highlight ─────────────────────── */
+.tl-lamp-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 9999px;
+  z-index: -1;
+  box-shadow: 0 1px 6px rgba(30, 58, 95, 0.1);
+}
+
+.tl-lamp-glow-bar {
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 2px;
+  background: var(--clr-primary);
+  border-radius: 9999px 9999px 0 0;
+}
+
+.tl-lamp-glow-blur {
+  position: absolute;
+  background: rgba(46, 109, 164, 0.25);
+  border-radius: 9999px;
+}
+
+.tl-lamp-glow-blur--large {
+  width: 44px;
+  height: 18px;
+  filter: blur(10px);
+  bottom: -6px;
+  left: -8px;
+}
+
+.tl-lamp-glow-blur--medium {
+  width: 28px;
+  height: 14px;
+  filter: blur(8px);
+  bottom: -3px;
+  left: 0;
+}
+
+.tl-lamp-glow-blur--small {
+  width: 14px;
+  height: 10px;
+  filter: blur(4px);
+  bottom: 0;
+  left: 7px;
+}
+
+/* ── Right section ───────────────────────────────────── */
+.tl-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Book Now CTA */
+.tl-book-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  padding: 10px 22px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.tl-book-btn:hover {
+  background: var(--clr-primary);
+  transform: translateY(-1px);
+}
+
+/* ── Mobile menu ─────────────────────────────────────── */
+.tl-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.tl-hamburger__bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--clr-primary);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+/* mobile drawer */
+.tl-mobile-menu {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--clr-border);
+  padding: 20px 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 199;
+  box-shadow: 0 12px 32px rgba(30, 58, 95, 0.1);
+  animation: slideDown 0.25s ease both;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.tl-mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.tl-mobile-link:hover,
+.tl-mobile-link--active {
+  background: var(--clr-primary-xlight);
+  color: var(--clr-primary);
+}
+
+.tl-mobile-divider {
+  height: 1px;
+  background: var(--clr-border);
+  margin: 10px 0;
+}
+
+.tl-mobile-book {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  color: #fff;
+  border-radius: 9999px;
+  padding: 14px 24px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 6px;
+  transition: background 0.2s ease;
+}
+
+.tl-mobile-book:hover {
+  background: var(--clr-primary);
+}
+
+/* Responsive show/hide */
+@media (max-width: 900px) {
+  .tl-navbar {
+    display: none;
+  }
+  .tl-hamburger {
+    display: flex;
+  }
+  .tl-book-btn {
+    display: none;
+  }
+  .tl-navbar-wrapper {
+    padding: 0 20px;
+  }
+}
